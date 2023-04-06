@@ -13,6 +13,11 @@ public class Alien {
 	public String getaName() {
 		return aName;
 	}
+	public Alien(int aId, String aName) {
+		super();
+		this.aId = aId;
+		this.aName = aName;
+	}
 	public void setaName(String aName) {
 		this.aName = aName;
 	}

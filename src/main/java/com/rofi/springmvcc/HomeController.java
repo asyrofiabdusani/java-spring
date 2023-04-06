@@ -1,18 +1,23 @@
 package com.rofi.springmvcc;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.rofi.springmvccboot.model.Alien;
-
 @Controller
 
 public class HomeController {
@@ -81,8 +86,30 @@ public class HomeController {
 		m.addAttribute("name", "Aliens");
 	}
 	
-	@RequestMapping("addAlien")
+	/*
+	 * @RequestMapping("addAlien") public String addAlien(@ModelAttribute("a1")
+	 * Alien a, Model m) { return "result2"; }
+	 */
+	
+	/*
+	 * @RequestMapping(value="addAlien", method = RequestMethod.POST ) public String
+	 * addAlien(@ModelAttribute("a1") Alien a, Model m) { return "result2"; }
+	 */
+	
+	/*
+	 * @GetMapping(value="addAlien" ) public String addAlien(@ModelAttribute("a1")
+	 * Alien a, Model m) { return "result2"; }
+	 */
+	
+	@PostMapping(value="addAlien")
 	public String addAlien(@ModelAttribute("a1") Alien a, Model m) {	
 		return "result2";
+	}
+	
+	@GetMapping("getAliens")
+	public String getAliens(Model m) {
+		List<Alien> aliens = Arrays.asList(new Alien(101, "Boby"), new Alien(102, "Indra"));
+		m.addAttribute("result", aliens);
+		return "showAliens";
 	}
 }

@@ -1,0 +1,60 @@
+Make sure every class has @Component at the top of class
+getBean => the interface to get class.
+to make spring create object automatically, we must create spring file with extension .xml and define the class which will be created the object in the bean tag
+@Autowired is needed to create object without initiate the class, and spring will handle it
+applicationContext will create spring container
+all of spring bean are singleton beans. It means, when we create 2 object different, in the memory it will be refer in the same object.
+If we want to make it different, we can use spring scope. It is added in the spring file in the bean tag with value prototype. The default value is singleton
+
+
+===============
+We can set the value in class in the bean tag.
+Every method or variable in the class known as property in the bean 
+Spring run step :
+1. create object from class registered
+2. set value for the object (when the set method has been declared)
+
+================
+reference
+if we  want to use reference, we must register the class reference in the spring file, and also register the property as reference in the bean of class which using the reference
+to assign value to the variable, we can use setter injection and constructor injection.
+setter injection => <property name="age" value="10"></property>
+constructor injection => <constructor-arg value="12"></constructor-arg>
+Both of it can be done in the spring value
+if the variable value is optional, don't use constructor to inject the value
+we can add autowire byName and byType in the bean tag to create the object.
+
+
+=================
+Controller
+we can create controller in the main folder.
+In the controller, we must include @Controller to make the project know that is the controller.
+For the mapping of path, we must put @Mapping("[url_path]") in the top of method
+to run jsp file as return, we must import dependency tomcat jsp
+
+requestParam => get param which is sent
+modelandview => it can catch the result, and get jsp file and throw it to return
+to configure the projct, we can do it in the application.properties
+
+ModelMap => Support several feature like map
+Model => can use without view
+we can determine the method in the controller :
+@RequestMapping(value="addAlien", method = RequestMethod.POST)
+@RequestMapping(value="addAlien", method = RequestMethod.GET)
+@PostMapping(value="addAlien")
+@GetMapping(value="addAlien")
+
+===================
+ORM (Object Relational Mapping) -> placing object value to the table of database
+JPA (Java Persistence API)
+Spring hibernate config
+1. Hibenate core
+2. Spring ORM
+3. Spring transaction
+4. mysql connector/other db connector
+5. c3p0
+
+===================
+REST
+
+GetMapping ->
